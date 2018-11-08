@@ -40,8 +40,9 @@ def obj_to_keywords(obj):
     keywords = graph_dict_to_keywords(dicts,ranks)
     return keywords
 
-obj = {'id':1,'text':"Compatibility of systems of linear constraints over the set of natural numbers. Criteria of compatibility of a system of linear Diophantine equations, strict inequations, and nonstrict inequations are considered. Upper bounds for components of a minimal set of solutions and algorithms of construction of minimal generating sets of solutions for all types of systems are given. These criteria and the corresponding algorithms for constructing a minimal supporting set of solutions can be used in solving all the considered types systems and systems of mixed types."}
-obj_to_keywords(obj)
+if __name__ == '__main__':
+    obj = {'id':1,'text':"Compatibility of systems of linear constraints over the set of natural numbers. Criteria of compatibility of a system of linear Diophantine equations, strict inequations, and nonstrict inequations are considered. Upper bounds for components of a minimal set of solutions and algorithms of construction of minimal generating sets of solutions for all types of systems are given. These criteria and the corresponding algorithms for constructing a minimal supporting set of solutions can be used in solving all the considered types systems and systems of mixed types."}
+    obj_to_keywords(obj)
 
 # obj = pytextrank.json_iter(path_stage0)
 # graphs = graph_from_object(obj)
