@@ -12,32 +12,13 @@ path_stage1 = "output/o1.json"
 path_stage2 = "output/o2.json"
 path_graph_dot = "output/graph.dot"
 
-def graph_from_object(obj):
-    arr = []
-    for graf in pytextrank.parse_doc(obj):
-        arr.append(graf)
-    return arr
-
-def graph_dict(graphs):
-    arr = []
-    for graph in graphs:
-        arr.append(graph._asdict())
-    return arr
-
-def graph_dict_to_keywords(dicts,ranks):
-    arr = []
-    for rl in pytextrank.normalize_key_phrases(dicts, ranks):
-        arr.append(rl._asdict())
-    return arr
-    
-
 def obj_to_keywords(obj):
     if isinstance(obj, list) == False:
         obj = [obj]
-    graphs = graph_from_object(obj)
-    dicts = graph_dict(graphs)
+    graphs = list(map(lambda x: x, pytextrank.parse_doc(obj)))
+    dicts = list(map(lambda x: x._asdict(), graphs))
     graph, ranks = text_rank(path_stage1)
-    keywords = graph_dict_to_keywords(dicts,ranks)
+    keywords = list(map(lambda x: x._asdict(), pytextrank.normalize_key_phrases(dicts, ranks)))
     return keywords
 
 if __name__ == '__main__':
